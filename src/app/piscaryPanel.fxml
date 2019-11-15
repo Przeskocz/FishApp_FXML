@@ -102,11 +102,17 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="listViewAvailableFish" layoutX="319.0" layoutY="95.0" prefHeight="80.0" prefWidth="161.0" />
+      <ListView fx:id="listViewAvailableFish" layoutX="319.0" layoutY="95.0" prefHeight="121.0" prefWidth="218.0" />
       <Label layoutX="319.0" layoutY="76.0" text="Dostępne rybki:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Label layoutX="319.0" layoutY="227.0" text="Przynęty:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listViewEffectiveBait" layoutX="320.0" layoutY="250.0" prefHeight="131.0" prefWidth="218.0" />
    </children>
 </AnchorPane>

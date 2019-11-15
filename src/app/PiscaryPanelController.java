@@ -34,6 +34,8 @@ public class PiscaryPanelController {
     Label labelIsBookingSlot;
     @FXML
     ListView<String> listViewAvailableFish;
+    @FXML
+    ListView<String> listViewEffectiveBait;
 
     private Piscary onePiscary;
 
@@ -51,9 +53,6 @@ public class PiscaryPanelController {
         onePiscary.addNewFish(new Fish("Płoć", Fish.TypeOfFish.HERBIVORE, 1, 2));
         onePiscary.addNewFish(new Fish("Okoń", Fish.TypeOfFish.MEAT_EATER, 0, 1));
         onePiscary.addNewFish(new Fish("Sum", Fish.TypeOfFish.SCAVENGER, 5, 40));
-
-
-        //TODO: please implemet list of 'availableFish' and array of 'effectiveBait' in GUI Piscary
     }
 
     @FXML
@@ -78,5 +77,7 @@ public class PiscaryPanelController {
 
         listViewAvailableFish.setItems(speciesOfFish);// wstawienie obserwowalnej listy do kontrolki listView
 
+        ObservableList<String> baits = FXCollections.observableArrayList(onePiscary.getEffectiveBait());
+        listViewEffectiveBait.setItems(baits); //wstawienie obserwowalnej listy do kontrolki listView Baits
     }
 }
