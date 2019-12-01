@@ -1,4 +1,4 @@
-package app;
+package app.piscary;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
