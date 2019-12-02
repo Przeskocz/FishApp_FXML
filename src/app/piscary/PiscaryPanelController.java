@@ -1,16 +1,24 @@
-package app;
+package app.piscary;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Fish;
 import model.Piscary;
 
+import java.io.IOException;
 import java.util.HashSet;
 
+@SuppressWarnings("ALL")
 public class PiscaryPanelController {
     @FXML
     Label labelArea;
@@ -36,6 +44,8 @@ public class PiscaryPanelController {
     ListView<String> listViewAvailableFish;
     @FXML
     ListView<String> listViewEffectiveBait;
+    @FXML
+    Button buttonBack;
 
     private Piscary onePiscary;
 
@@ -79,5 +89,33 @@ public class PiscaryPanelController {
 
         ObservableList<String> baits = FXCollections.observableArrayList(onePiscary.getEffectiveBait());
         listViewEffectiveBait.setItems(baits); //wstawienie obserwowalnej listy do kontrolki listView Baits
+    }
+
+    public void buttonBack_Clicked(MouseEvent e) {
+
+        String patch = "/app/mainMenuPanel.fxml";
+
+        try {
+            // Tworzony jest Loader dla podanego panelu w zmiennej patch
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(patch));
+
+            // Tworzona nowa "estrada"
+            Stage stage = new Stage();
+
+            // Na estradę jest tworzona nowa scena na którą załadowywany jest panel z loader'a
+            stage.setScene(new Scene(loader.load()));
+
+            // Ustawia tytuł okna (napis na pasku u góry)
+            stage.setTitle("Menu główne");
+
+            // Prezentuj/pokaż na ekranie
+            stage.show();
+
+            // Ukryj bieżące okno
+            ((Node) (e.getSource())).getScene().getWindow().hide();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
