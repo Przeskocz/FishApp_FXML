@@ -1,14 +1,20 @@
 package app.fish;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Fish;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class FishPanelController {
     @FXML
     Label labelSpecies;
@@ -21,6 +27,9 @@ public class FishPanelController {
 
     @FXML
     Button buttonClickMe;
+
+    @FXML
+    Button buttonBack;
 
     private List<Fish> listOfFish;
     private int indexOfFish = -1;
@@ -35,6 +44,35 @@ public class FishPanelController {
         listOfFish.add(new Fish("Płoć", Fish.TypeOfFish.HERBIVORE, 1, 2));
         listOfFish.add(new Fish("Okoń", Fish.TypeOfFish.MEAT_EATER,  0, 1));
         listOfFish.add(new Fish("Sum", Fish.TypeOfFish.SCAVENGER, 5, 40));
+    }
+
+    @FXML
+    public void buttonBack_Clicked(MouseEvent e){
+
+        String patch = "/app/mainMenuPanel.fxml";
+
+        try {
+            // Tworzony jest Loader dla podanego panelu w zmiennej patch
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(patch));
+
+            // Tworzona nowa "estrada"
+            Stage stage = new Stage();
+
+            // Na estradę jest tworzona nowa scena na którą załadowywany jest panel z loader'a
+            stage.setScene(new Scene(loader.load()));
+
+            // Ustawia tytuł okna (napis na pasku u góry)
+            stage.setTitle("Menu główne");
+
+            // Prezentuj/pokaż na ekranie
+            stage.show();
+
+            // Ukryj bieżące okno
+            ((Node) (e.getSource())).getScene().getWindow().hide();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
