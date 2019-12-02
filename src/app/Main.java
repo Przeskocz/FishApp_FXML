@@ -10,11 +10,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("piscaryPanel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainMenuPanel.fxml"));
 
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Menu wyboru");
         primaryStage.show();
     }
 
