@@ -55,14 +55,14 @@ public class PiscaryPanelController {
                 new HashSet<Fish>(), 7, 19, 30, 30, 3, true, baits);
 
         //dodawanie fiszków do stawu
-        onePiscary.addNewFish(new Fish("Karp", Fish.TypeOfFish.HERBIVORE, 1, 25));
-        onePiscary.addNewFish(new Fish("Amur", Fish.TypeOfFish.HERBIVORE, 1, 15));
-        onePiscary.addNewFish(new Fish("Jesiotr", Fish.TypeOfFish.HERBIVORE, 2, 15));
-        onePiscary.addNewFish(new Fish("Szczupak", Fish.TypeOfFish.MEAT_EATER, 1, 10));
-        onePiscary.addNewFish(new Fish("Karaś", Fish.TypeOfFish.HERBIVORE, 1, 3));
-        onePiscary.addNewFish(new Fish("Płoć", Fish.TypeOfFish.HERBIVORE, 1, 2));
-        onePiscary.addNewFish(new Fish("Okoń", Fish.TypeOfFish.MEAT_EATER, 0, 1));
-        onePiscary.addNewFish(new Fish("Sum", Fish.TypeOfFish.SCAVENGER, 5, 40));
+        onePiscary.addNewFish(new Fish(0,"Karp", Fish.TypeOfFish.HERBIVORE, 1, 25));
+        onePiscary.addNewFish(new Fish(1,"Amur", Fish.TypeOfFish.HERBIVORE, 1, 15));
+        onePiscary.addNewFish(new Fish(2,"Jesiotr", Fish.TypeOfFish.HERBIVORE, 2, 15));
+        onePiscary.addNewFish(new Fish(3,"Szczupak", Fish.TypeOfFish.MEAT_EATER, 1, 10));
+        onePiscary.addNewFish(new Fish(4,"Karaś", Fish.TypeOfFish.HERBIVORE, 1, 3));
+        onePiscary.addNewFish(new Fish(5,"Płoć", Fish.TypeOfFish.HERBIVORE, 1, 2));
+        onePiscary.addNewFish(new Fish(6,"Okoń", Fish.TypeOfFish.MEAT_EATER, 0, 1));
+        onePiscary.addNewFish(new Fish(7,"Sum", Fish.TypeOfFish.SCAVENGER, 5, 40));
     }
 
     @FXML
