@@ -1,5 +1,6 @@
 package app.fish;
 
+import database.MySqlDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +12,10 @@ import javafx.stage.Stage;
 import model.Fish;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,15 +40,38 @@ public class FishPanelController {
     private int indexOfFish = -1;
 
     public FishPanelController() {
+        PreparedStatement pstm = null;
+        ResultSet resultSet = null;
+
         this.listOfFish = new ArrayList<>();
-        listOfFish.add(new Fish("Karp", Fish.TypeOfFish.HERBIVORE, 1, 25));
-        listOfFish.add(new Fish("Amur", Fish.TypeOfFish.HERBIVORE, 1, 15));
-        listOfFish.add(new Fish("Jesiotr", Fish.TypeOfFish.HERBIVORE, 2, 15));
-        listOfFish.add(new Fish("Szczupak", Fish.TypeOfFish.MEAT_EATER, 1, 10));
-        listOfFish.add(new Fish("Karaś", Fish.TypeOfFish.HERBIVORE, 1, 3));
-        listOfFish.add(new Fish("Płoć", Fish.TypeOfFish.HERBIVORE, 1, 2));
-        listOfFish.add(new Fish("Okoń", Fish.TypeOfFish.MEAT_EATER,  0, 1));
-        listOfFish.add(new Fish("Sum", Fish.TypeOfFish.SCAVENGER, 5, 40));
+
+        Connection conn = MySqlDB.getConnection();
+        String query = " SELECT * FROM fish ";
+
+        try {
+            pstm = conn.prepareStatement(query);
+            resultSet = pstm.executeQuery();
+
+            while(resultSet.next()) {
+                long fishId = resultSet.getLong("fish_id");
+                String fishSpecies = resultSet.getString("fish_species");
+                String fishType = resultSet.getString("fish_type");
+                int fishWeightFrom = resultSet.getInt("fish_weight_from");
+                int fishWeightTo = resultSet.getInt("fish_weight_to");
+
+                Fish odczytanaRyba = new Fish(fishId, fishSpecies, Fish.TypeOfFish.fromString(fishType), fishWeightFrom,
+                        fishWeightTo);
+
+                listOfFish.add(odczytanaRyba);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            MySqlDB.close(resultSet);
+            MySqlDB.close(pstm);
+            MySqlDB.close();
+        }
     }
 
     @FXML
