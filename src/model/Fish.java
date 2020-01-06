@@ -6,6 +6,7 @@ public class Fish {
       waga od(kg)
       waga do(kg)
     */
+    private long fishId;
     private String species;
     private TypeOfFish type;
     private int weightFrom;
@@ -15,13 +16,21 @@ public class Fish {
 
     }
 
-    public Fish(String species, TypeOfFish type, int weightFrom, int weightTo) {
+    public Fish(long fishId, String species, TypeOfFish type, int weightFrom, int weightTo) {
+        this.fishId = fishId;
         this.species = species;
         this.type = type;
         this.weightFrom = weightFrom;
         this.weightTo = weightTo;
     }
 
+    public long getFishId() {
+        return fishId;
+    }
+
+    public void setFishId(int fishId) {
+        this.fishId = fishId;
+    }
 
     public String getSpecies() {
         return species;
@@ -56,28 +65,49 @@ public class Fish {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String returnFish = "";
 
         returnFish = returnFish + "{Gatunek: " + this.species + "\n";
 
-        switch(this.type){
+        switch (this.type) {
             case MEAT_EATER:
-                returnFish = returnFish + "Typ: mięsożerna" +"\n";
+                returnFish = returnFish + "Typ: mięsożerna" + "\n";
                 break;
             case HERBIVORE:
-                returnFish = returnFish + "Typ: roślinożerna" +"\n";
+                returnFish = returnFish + "Typ: roślinożerna" + "\n";
                 break;
             case SCAVENGER:
-                returnFish = returnFish + "Typ: padlinożerna" +"\n";
+                returnFish = returnFish + "Typ: padlinożerna" + "\n";
                 break;
         }
 
-        returnFish = returnFish + "Waga od: " + this.weightFrom +"\n";
-        returnFish = returnFish + "Waga do: " + this.weightTo +"}\n\n";
+        returnFish = returnFish + "Waga od: " + this.weightFrom + "\n";
+        returnFish = returnFish + "Waga do: " + this.weightTo + "}\n\n";
 
         return returnFish;
     }
 
-    public enum TypeOfFish {MEAT_EATER, HERBIVORE, SCAVENGER};
+    public enum TypeOfFish {
+        MEAT_EATER("MEAT_EATER", 0),
+        HERBIVORE("HERBIVORE", 1),
+        SCAVENGER("SCAVENGER", 2);
+
+        private String text;
+        private int index;
+
+        TypeOfFish(String text, int index) {
+            this.text = text;
+            this.index = index;
+        }
+        
+        public static TypeOfFish fromString(String text) {
+            for (TypeOfFish item : TypeOfFish.values()) {
+                if (item.text.equalsIgnoreCase(text)) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
 }

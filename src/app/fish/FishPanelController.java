@@ -1,5 +1,7 @@
 package app.fish;
 
+import app.repository.FishRepository;
+import database.MySqlDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +13,10 @@ import javafx.stage.Stage;
 import model.Fish;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,15 +41,7 @@ public class FishPanelController {
     private int indexOfFish = -1;
 
     public FishPanelController() {
-        this.listOfFish = new ArrayList<>();
-        listOfFish.add(new Fish("Karp", Fish.TypeOfFish.HERBIVORE, 1, 25));
-        listOfFish.add(new Fish("Amur", Fish.TypeOfFish.HERBIVORE, 1, 15));
-        listOfFish.add(new Fish("Jesiotr", Fish.TypeOfFish.HERBIVORE, 2, 15));
-        listOfFish.add(new Fish("Szczupak", Fish.TypeOfFish.MEAT_EATER, 1, 10));
-        listOfFish.add(new Fish("Karaś", Fish.TypeOfFish.HERBIVORE, 1, 3));
-        listOfFish.add(new Fish("Płoć", Fish.TypeOfFish.HERBIVORE, 1, 2));
-        listOfFish.add(new Fish("Okoń", Fish.TypeOfFish.MEAT_EATER,  0, 1));
-        listOfFish.add(new Fish("Sum", Fish.TypeOfFish.SCAVENGER, 5, 40));
+        this.listOfFish = FishRepository.getAllFish();
     }
 
     @FXML
