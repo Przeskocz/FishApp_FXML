@@ -17,7 +17,7 @@ public class InsertExample {
         INSERT INTO piscary (piscary_id, piscary_area, piscary_name, piscary_address, piscary_contact, piscary_hour_from, piscary_hour_to, piscary_price_day, piscary_price_night, piscary_count_rod, piscary_booking_slot, piscary_effective_bait)
         VALUES (NULL, 5.0, 'Nad stawami', 'Siedliska 10', '+48 754 220 272', 7, 19, 30, 30, 3, true, NULL);
         */
-        Piscary nowyStaw = new Piscary(6.4, "Hurko", "Przemyśl 43" , "+48 839 843 754", new HashSet<Fish>(), 7,
+        Piscary nowyStaw = new Piscary(1,6.4, "Hurko", "Przemyśl 43" , "+48 839 843 754", new HashSet<Fish>(), 7,
         19, 25, 25, 2, true, new String[]{"kukurydza","kulki truskawkowe","pellet Halibut"});
         Connection conn = MySqlDB.getConnection();
         String query = " INSERT INTO piscary (piscary_id, piscary_area, piscary_name, piscary_address, piscary_contact," +

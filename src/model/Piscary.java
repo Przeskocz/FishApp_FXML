@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Set;
 
 public class Piscary {
@@ -17,6 +18,7 @@ public class Piscary {
     Czy wymagana rezerwacja stanowiska
     Najskuteczniejsze przynęty
     */
+    private long piscaryId;
     private double area;
     private String name;
     private String address;
@@ -33,8 +35,9 @@ public class Piscary {
     public Piscary() {
     }
 
-    public Piscary(double area, String name, String address, String contact, Set<Fish> availableFish, int hourFrom,
+    public Piscary(long piscaryId, double area, String name, String address, String contact, Set<Fish> availableFish, int hourFrom,
                    int hourTo, int priceDay, int priceNight, int countRod, boolean isBookingSlot, String[] effectiveBait) {
+        this.piscaryId = piscaryId;
         this.area = area;
         this.name = name;
         this.address = address;
@@ -61,6 +64,10 @@ public class Piscary {
         this.priceDay = priceDay;
         this.countRod = countRod;
         this.isBookingSlot = isBookingSlot;
+    }
+
+    public long getPiscaryId() {
+        return piscaryId;
     }
 
     public double getArea() {
@@ -161,6 +168,10 @@ public class Piscary {
 
     public void addNewFish(Fish newFish) {
         availableFish.add(newFish);
+    }
+
+    public void addNewFishes(Collection<Fish> fishCollection) {
+        availableFish.addAll(fishCollection);
     }
 
     public void removeFish(Fish fishToRemove) {
