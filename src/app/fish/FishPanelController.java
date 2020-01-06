@@ -1,5 +1,6 @@
 package app.fish;
 
+import app.repository.FishRepository;
 import database.MySqlDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,38 +41,7 @@ public class FishPanelController {
     private int indexOfFish = -1;
 
     public FishPanelController() {
-        PreparedStatement pstm = null;
-        ResultSet resultSet = null;
-
-        this.listOfFish = new ArrayList<>();
-
-        Connection conn = MySqlDB.getConnection();
-        String query = " SELECT * FROM fish ";
-
-        try {
-            pstm = conn.prepareStatement(query);
-            resultSet = pstm.executeQuery();
-
-            while(resultSet.next()) {
-                long fishId = resultSet.getLong("fish_id");
-                String fishSpecies = resultSet.getString("fish_species");
-                String fishType = resultSet.getString("fish_type");
-                int fishWeightFrom = resultSet.getInt("fish_weight_from");
-                int fishWeightTo = resultSet.getInt("fish_weight_to");
-
-                Fish odczytanaRyba = new Fish(fishId, fishSpecies, Fish.TypeOfFish.fromString(fishType), fishWeightFrom,
-                        fishWeightTo);
-
-                listOfFish.add(odczytanaRyba);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            MySqlDB.close(resultSet);
-            MySqlDB.close(pstm);
-            MySqlDB.close();
-        }
+        this.listOfFish = FishRepository.getAllFish();
     }
 
     @FXML
