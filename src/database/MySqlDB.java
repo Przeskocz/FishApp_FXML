@@ -29,6 +29,7 @@ public class MySqlDB {
         try {
             if (connect != null) {
                 connect.close();
+                connect = null;
             }
         } catch (SQLException e) {
             System.out.println("MySqlDB.close() SQLException! " + e);

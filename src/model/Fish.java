@@ -89,19 +89,19 @@ public class Fish {
     }
 
     public enum TypeOfFish {
-        MEAT_EATER("MEAT_EATER"),
-        HERBIVORE("HERBIVORE"),
-        SCAVENGER("SCAVENGER");
+        MEAT_EATER("MEAT_EATER", 0),
+        HERBIVORE("HERBIVORE", 1),
+        SCAVENGER("SCAVENGER", 2);
 
         private String text;
+        private int index;
 
-
-        TypeOfFish(String text) {
+        TypeOfFish(String text, int index) {
             this.text = text;
+            this.index = index;
         }
-
+        
         public static TypeOfFish fromString(String text) {
-
             for (TypeOfFish item : TypeOfFish.values()) {
                 if (item.text.equalsIgnoreCase(text)) {
                     return item;
@@ -109,6 +109,5 @@ public class Fish {
             }
             return null;
         }
-
     }
 }
