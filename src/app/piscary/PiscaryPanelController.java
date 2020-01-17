@@ -1,11 +1,8 @@
 package app.piscary;
 
-import app.repository.FishRepository;
 import app.repository.PiscaryRepository;
-import database.MySqlDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,16 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Fish;
-import model.Piscary;
+import app.model.Fish;
+import app.model.Piscary;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -66,7 +57,7 @@ public class PiscaryPanelController {
 
     @FXML
     private void initialize() {
-
+        displayNextPiscaryOnGUI();
     }
 
     public void buttonBack_Clicked(MouseEvent e) {
@@ -99,6 +90,11 @@ public class PiscaryPanelController {
 
     @FXML
     public void buttonClickMe_Clicked(MouseEvent e) {
+        displayNextPiscaryOnGUI();
+    }
+
+    private void displayNextPiscaryOnGUI(){
+
         if (indexOfPiscary + 1 == listOfPiscary.size())
             indexOfPiscary = -1;
 
@@ -112,9 +108,9 @@ public class PiscaryPanelController {
         labelContact.setText(selectedPiscary.getContact());
         labelHourFrom.setText(String.valueOf(selectedPiscary.getHourFrom()));
         labelHourTo.setText(String.valueOf(selectedPiscary.getHourTo()));
-        labelPriceDay.setText(String.valueOf(selectedPiscary.getPriceDay())+" zł");
-        labelPriceNight.setText(String.valueOf(selectedPiscary.getPriceNight())+ " zł");
-        labelCountRod.setText(String.valueOf(selectedPiscary.getCountRod())+ " szt.");
+        labelPriceDay.setText(String.valueOf(selectedPiscary.getPriceDay()) + " zł");
+        labelPriceNight.setText(String.valueOf(selectedPiscary.getPriceNight()) + " zł");
+        labelCountRod.setText(String.valueOf(selectedPiscary.getCountRod()) + " szt.");
         labelIsBookingSlot.setText(selectedPiscary.isBookingSlot() ? "Tak" : "Nie"); //wyciagam boolean
 
         ObservableList<String> speciesOfFish = FXCollections.observableArrayList();
@@ -128,7 +124,11 @@ public class PiscaryPanelController {
 
         ObservableList<String> baits = FXCollections.observableArrayList(selectedPiscary.getEffectiveBait());
         listViewEffectiveBait.setItems(baits); //wstawienie obserwowalnej listy do kontrolki listView Baits
-
     }
+
 }
+
+
+
+
 

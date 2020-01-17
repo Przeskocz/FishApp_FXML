@@ -1,7 +1,6 @@
 package app.fish;
 
 import app.repository.FishRepository;
-import database.MySqlDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,14 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Fish;
+import app.model.Fish;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -43,6 +37,12 @@ public class FishPanelController {
     public FishPanelController() {
         this.listOfFish = FishRepository.getAllFish();
     }
+
+    @FXML //konstruktor dla GUI
+    private void initialize() {
+        displayNextFishOnGUI();
+    }
+
 
     @FXML
     public void buttonBack_Clicked(MouseEvent e){
@@ -75,6 +75,10 @@ public class FishPanelController {
 
     @FXML
     public void buttonClickMe_Clicked(MouseEvent e) {
+        displayNextFishOnGUI();
+    }
+
+    private void displayNextFishOnGUI() {
         if (indexOfFish + 1 == listOfFish.size())
             indexOfFish = -1;
 

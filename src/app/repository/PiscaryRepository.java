@@ -1,7 +1,7 @@
 package app.repository;
 
 import database.MySqlDB;
-import model.Piscary;
+import app.model.Piscary;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,6 +38,9 @@ public class PiscaryRepository {
                 int piscary_count_rod = resultSet.getInt("piscary_count_rod");
                 boolean piscary_booking_slot = resultSet.getBoolean("piscary_booking_slot");
                 String piscary_effective_bait = resultSet.getString("piscary_effective_bait");
+
+                if (piscary_effective_bait == null)
+                    piscary_effective_bait = "";
 
                 Piscary odczytaneLowisko = new Piscary(piscary_id, piscary_area, piscary_name, piscary_address, piscary_contact,
                         new HashSet<>(),piscary_hour_from, piscary_hour_to, piscary_price_day, piscary_price_night, piscary_count_rod,
