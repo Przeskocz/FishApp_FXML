@@ -1,13 +1,11 @@
 package app.repository;
 
 import database.MySqlDB;
-import model.Fish;
+import app.model.Fish;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -87,5 +85,28 @@ public class FishRepository {
         }
 
         return returnedListOfFish;
+    }
+
+    public static void createFish(Fish newFish){
+        PreparedStatement pstm = null;
+        Connection conn = MySqlDB.getConnection();
+        String query = " INSERT INTO fish (fish_id, fish_species, fish_type, fish_weight_from, fish_weight_to)" +
+                " VALUES (NULL, ?, ?, ?, ?) ";
+
+        try {
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, newFish.getSpecies());
+            pstm.setString(2, newFish.getType().toString());
+            pstm.setInt(3, newFish.getWeightFrom());
+            pstm.setInt(4, newFish.getWeightTo());
+
+            pstm.execute();
+
+        } catch (Exception e) {
+            System.out.println("FishRepository.createFish() exception! " + e);
+        } finally {
+            MySqlDB.close(pstm);
+            MySqlDB.close();
+        }
     }
 }

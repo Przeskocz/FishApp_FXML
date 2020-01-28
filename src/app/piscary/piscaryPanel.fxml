@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.piscary.PiscaryPanelController">
+<fx:root type="javafx.scene.layout.AnchorPane"  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="39.0" layoutY="84.0" text="Powierzchnia:">
          <font>
@@ -122,4 +122,4 @@
       </Button>
       <Button fx:id="buttonClickMe" layoutX="202.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#buttonClickMe_Clicked" prefHeight="30.0" prefWidth="94.0" text="Kliknij Mnie!!!" />
    </children>
-</AnchorPane>
+</fx:root>

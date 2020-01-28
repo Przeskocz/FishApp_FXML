@@ -1,4 +1,6 @@
-package database;
+package database.example;
+
+import database.MySqlDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +9,7 @@ import java.sql.ResultSet;
 @SuppressWarnings("Duplicates")
 public class SelectWithJoinExample {
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         PreparedStatement pstm = null;
         ResultSet resultSet = null;
         int piscaryId = 4; //wybrane przez użytkownika

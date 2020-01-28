@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainMenuController">
-   <children>
-      <Button fx:id="buttonFish" layoutX="252.0" layoutY="106.0" mnemonicParsing="false" text="Rybki" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonPiscary" layoutX="239.0" layoutY="215.0" mnemonicParsing="false" text="Łowiska" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-   </children>
-</Pane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainMenuController">
+   <top>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="buttonHome" layoutX="76.0" layoutY="62.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="170.0" style="-fx-background-color: #64ccf1;" text="Home">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Button>
+            <MenuButton fx:id="mButtonChooseRegion" layoutX="283.0" layoutY="62.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="293.0" text="Wybierz region">
+              <items>
+                <MenuItem mnemonicParsing="false" style="-fx-font-size: 16pt;" text="Podkarpackie" />
+                <MenuItem mnemonicParsing="false" style="-fx-font-size: 16pt;" text="Małopolskie" />
+              </items>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </MenuButton>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <HBox fx:id="contentHBox" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
