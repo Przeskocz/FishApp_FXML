@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 @SuppressWarnings("Duplicates")
 public class SelectExample {
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         PreparedStatement pstm = null;
         ResultSet resultSet = null;
 

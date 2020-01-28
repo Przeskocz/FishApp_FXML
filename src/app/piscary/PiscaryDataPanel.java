@@ -1,5 +1,7 @@
 package app.piscary;
 
+import app.model.Fish;
+import app.model.Piscary;
 import app.repository.PiscaryRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,15 +13,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import app.model.Fish;
-import app.model.Piscary;
 
 import java.io.IOException;
 import java.util.List;
 
-@SuppressWarnings("ALL")
-public class PiscaryPanelController {
+@SuppressWarnings("Duplicates")
+public class PiscaryDataPanel extends AnchorPane {
     @FXML
     Label labelArea;
     @FXML
@@ -51,9 +53,20 @@ public class PiscaryPanelController {
     private int indexOfPiscary = -1;
 
 
-    public PiscaryPanelController() {
+    public PiscaryDataPanel(){
         listOfPiscary = PiscaryRepository.getAllPiscary();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/app/piscary/piscaryPanel.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
+
 
     @FXML
     private void initialize() {
@@ -61,31 +74,6 @@ public class PiscaryPanelController {
     }
 
     public void buttonBack_Clicked(MouseEvent e) {
-
-        String patch = "/app/mainMenuPanel.fxml";
-
-        try {
-            // Tworzony jest Loader dla podanego panelu w zmiennej patch
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(patch));
-
-            // Tworzona nowa "estrada"
-            Stage stage = new Stage();
-
-            // Na estradę jest tworzona nowa scena na którą załadowywany jest panel z loader'a
-            stage.setScene(new Scene(loader.load()));
-
-            // Ustawia tytuł okna (napis na pasku u góry)
-            stage.setTitle("Menu główne");
-
-            // Prezentuj/pokaż na ekranie
-            stage.show();
-
-            // Ukryj bieżące okno
-            ((Node) (e.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
     @FXML
@@ -125,10 +113,4 @@ public class PiscaryPanelController {
         ObservableList<String> baits = FXCollections.observableArrayList(selectedPiscary.getEffectiveBait());
         listViewEffectiveBait.setItems(baits); //wstawienie obserwowalnej listy do kontrolki listView Baits
     }
-
 }
-
-
-
-
-

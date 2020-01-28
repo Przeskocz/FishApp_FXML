@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import app.model.Fish;
 
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-public class FishPanelController {
+public class FishDataPanel extends AnchorPane {
     @FXML
     Label labelSpecies;
     @FXML
@@ -34,8 +35,18 @@ public class FishPanelController {
     private List<Fish> listOfFish;
     private int indexOfFish = -1;
 
-    public FishPanelController() {
+    public FishDataPanel() {
         this.listOfFish = FishRepository.getAllFish();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/app/fish/fishPanel.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     @FXML //konstruktor dla GUI
@@ -47,7 +58,7 @@ public class FishPanelController {
     @FXML
     public void buttonBack_Clicked(MouseEvent e){
 
-        String patch = "/app/mainMenuPanel.fxml";
+        /*String patch = "/app/mainMenuPanel.fxml";
 
         try {
             // Tworzony jest Loader dla podanego panelu w zmiennej patch
@@ -70,7 +81,7 @@ public class FishPanelController {
 
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
+        }*/
     }
 
     @FXML

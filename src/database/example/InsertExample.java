@@ -11,7 +11,7 @@ import java.util.HashSet;
 @SuppressWarnings("Duplicates")
 public class InsertExample {
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         PreparedStatement pstm = null;
         Piscary nowyStaw = new Piscary(1,6.4, "Hurko", "Przemyśl 43" , "+48 839 843 754", new HashSet<Fish>(), 7,
         19, 25, 25, 2, true, new String[]{"kukurydza","kulki truskawkowe","pellet Halibut"});
