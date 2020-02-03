@@ -1,125 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type="javafx.scene.layout.AnchorPane"  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="400.0" prefWidth="600.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="39.0" layoutY="84.0" text="Powierzchnia:">
+      <Label fx:id="labelName" layoutX="74.0" layoutY="12.0" prefHeight="41.0" prefWidth="156.0" text="Nazwa stawu" textFill="#01ee01">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="309.0" layoutY="22.0" text="Godziny otwarcia:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="500.0" layoutY="23.0" text=":">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelArea" layoutX="147.0" layoutY="84.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelName" layoutX="39.0" layoutY="43.0" text="Nazwa stawu" textFill="#01ee01">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="39.0" layoutY="115.0" text="Adres:">
+      <Label layoutX="300.0" layoutY="73.0" text="Opłata za dzień:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelAddress" layoutX="97.0" layoutY="117.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="39.0" layoutY="142.0" text="Kontakt:">
+      <Label layoutX="300.0" layoutY="114.0" text="Opłata za noc:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelContact" layoutX="103.0" layoutY="142.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="39.0" layoutY="173.0" text="Godziny otwarcia:">
+      <Label layoutX="300.0" layoutY="151.0" text="Maksymalna Ilość wędek:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="210.0" layoutY="177.0" text="-">
+      <Label layoutX="159.0" layoutY="366.0" text="Wymagana rezerwacja:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelHourFrom" layoutX="167.0" layoutY="177.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelHourTo" layoutX="230.0" layoutY="178.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="39.0" layoutY="202.0" text="Cena za dzień:">
+      <ListView fx:id="listViewAvailableFish" layoutX="41.0" layoutY="218.0" prefHeight="131.0" prefWidth="218.0" />
+      <Label layoutX="66.0" layoutY="198.0" text="Występujące Gatunki ryb:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelPriceDay" layoutX="138.0" layoutY="202.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="39.0" layoutY="230.0" text="Cena za noc:">
+      <Label layoutX="331.0" layoutY="198.0" text="Najskuteczniejsze przynęty:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelPriceNight" layoutX="138.0" layoutY="227.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="40.0" layoutY="259.0" text="Ilosc wedek:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelCountRod" layoutX="131.0" layoutY="259.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="40.0" layoutY="289.0" text="Rezerwacja: ">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelIsBookingSlot" layoutX="131.0" layoutY="292.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <ListView fx:id="listViewAvailableFish" layoutX="319.0" layoutY="95.0" prefHeight="121.0" prefWidth="218.0" />
-      <Label layoutX="319.0" layoutY="76.0" text="Dostępne rybki:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="319.0" layoutY="227.0" text="Przynęty:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <ListView fx:id="listViewEffectiveBait" layoutX="320.0" layoutY="250.0" prefHeight="131.0" prefWidth="218.0" />
-      <Button fx:id="buttonBack" layoutX="88.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#buttonBack_Clicked" prefHeight="27.0" prefWidth="105.0" text="Wstecz">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonClickMe" layoutX="202.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#buttonClickMe_Clicked" prefHeight="30.0" prefWidth="94.0" text="Kliknij Mnie!!!" />
+      <ListView fx:id="listViewEffectiveBait" layoutX="313.0" layoutY="218.0" prefHeight="131.0" prefWidth="218.0" />
+      <TextField fx:id="textArea" layoutX="57.0" layoutY="69.0" prefHeight="27.0" prefWidth="186.0" promptText="Powierzchnia" />
+      <TextField fx:id="textAddress" layoutX="57.0" layoutY="110.0" prefHeight="27.0" prefWidth="186.0" promptText="Adres" />
+      <TextField fx:id="textContact" layoutX="57.0" layoutY="148.0" prefHeight="27.0" prefWidth="186.0" promptText="Kontakt" />
+      <TextField fx:id="textHourFrom" layoutX="454.0" layoutY="20.0" prefHeight="25.0" prefWidth="33.0" promptText="od" />
+      <TextField fx:id="textHourTo" layoutX="520.0" layoutY="20.0" prefHeight="25.0" prefWidth="33.0" promptText="do" />
+      <TextField fx:id="textPriceDay" layoutX="412.0" layoutY="70.0" promptText="Cena za dzień" />
+      <TextField fx:id="textPriceNight" layoutX="412.0" layoutY="111.0" prefHeight="25.0" prefWidth="149.0" promptText="Cena za noc" />
+      <TextField fx:id="textCountRod" layoutX="479.0" layoutY="148.0" prefHeight="25.0" prefWidth="82.0" promptText="Ilość wędek" />
+      <TextField fx:id="textIsBookingSlot" layoutX="332.0" layoutY="364.0" prefHeight="25.0" prefWidth="134.0" promptText="Tak/Nie" />
    </children>
 </fx:root>

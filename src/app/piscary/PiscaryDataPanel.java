@@ -7,15 +7,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -23,31 +21,30 @@ import java.util.List;
 @SuppressWarnings("Duplicates")
 public class PiscaryDataPanel extends AnchorPane {
     @FXML
-    Label labelArea;
+    TextField textArea;
     @FXML
     Label labelName;
     @FXML
-    Label labelAddress;
+    TextField textAddress;
     @FXML
-    Label labelContact;
+    TextField textContact;
     @FXML
-    Label labelHourFrom;
+    TextField textHourFrom;
     @FXML
-    Label labelHourTo;
+    TextField textHourTo;
     @FXML
-    Label labelPriceDay;
+    TextField textPriceDay;
     @FXML
-    Label labelPriceNight;
+    TextField textPriceNight;
     @FXML
-    Label labelCountRod;
+    TextField textCountRod;
     @FXML
-    Label labelIsBookingSlot;
+    TextField textIsBookingSlot;
     @FXML
     ListView<String> listViewAvailableFish;
     @FXML
     ListView<String> listViewEffectiveBait;
-    @FXML
-    Button buttonBack;
+   
 
     private List<Piscary> listOfPiscary;
     private int indexOfPiscary = -1;
@@ -89,17 +86,17 @@ public class PiscaryDataPanel extends AnchorPane {
         //Wybór łowiska z listy
         Piscary selectedPiscary = listOfPiscary.get(++indexOfPiscary);
 
-        //Przypisywanie do label wybranych wartości
-        labelArea.setText(String.valueOf(selectedPiscary.getArea()) + " ha");
+        //Przypisywanie do text wybranych wartości
+        textArea.setText(String.valueOf(selectedPiscary.getArea()) + " ha");
         labelName.setText(selectedPiscary.getName());
-        labelAddress.setText(selectedPiscary.getAddress());
-        labelContact.setText(selectedPiscary.getContact());
-        labelHourFrom.setText(String.valueOf(selectedPiscary.getHourFrom()));
-        labelHourTo.setText(String.valueOf(selectedPiscary.getHourTo()));
-        labelPriceDay.setText(String.valueOf(selectedPiscary.getPriceDay()) + " zł");
-        labelPriceNight.setText(String.valueOf(selectedPiscary.getPriceNight()) + " zł");
-        labelCountRod.setText(String.valueOf(selectedPiscary.getCountRod()) + " szt.");
-        labelIsBookingSlot.setText(selectedPiscary.isBookingSlot() ? "Tak" : "Nie"); //wyciagam boolean
+        textAddress.setText(selectedPiscary.getAddress());
+        textContact.setText(selectedPiscary.getContact());
+        textHourFrom.setText(String.valueOf(selectedPiscary.getHourFrom()));
+        textHourTo.setText(String.valueOf(selectedPiscary.getHourTo()));
+        textPriceDay.setText(String.valueOf(selectedPiscary.getPriceDay()) + " zł");
+        textPriceNight.setText(String.valueOf(selectedPiscary.getPriceNight()) + " zł");
+        textCountRod.setText(String.valueOf(selectedPiscary.getCountRod()) + " szt.");
+        textIsBookingSlot.setText(selectedPiscary.isBookingSlot() ? "Tak" : "Nie"); //wyciagam boolean
 
         ObservableList<String> speciesOfFish = FXCollections.observableArrayList();
 
