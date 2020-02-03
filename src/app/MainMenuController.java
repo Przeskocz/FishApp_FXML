@@ -1,6 +1,7 @@
 package app;
 
 import app.fish.FishDataPanel;
+import app.piscary.ListOfPiscary;
 import app.piscary.PiscaryDataPanel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +28,7 @@ public class MainMenuController {
 
 
     private PiscaryDataPanel piscaryDataPanel;
+    private ListOfPiscary listOfPiscary;
     private FishDataPanel fishDataPanel;
 
     private ObservableList<MenuItem> menuItemsObservable;
@@ -62,8 +64,9 @@ public class MainMenuController {
         // wczytywać odpowiedni fragment GUI do contentHBox
         if (buttonClicked != null) {
             if (buttonClicked.getText().equalsIgnoreCase("Podkarpackie")) {
-                piscaryDataPanel = new PiscaryDataPanel();
-                contentHBox.getChildren().setAll(piscaryDataPanel);
+                //piscaryDataPanel = new PiscaryDataPanel();
+                listOfPiscary = new ListOfPiscary();
+                contentHBox.getChildren().setAll(listOfPiscary);
             } else if (buttonClicked.getText().equalsIgnoreCase("Małopolskie")) {
                 fishDataPanel = new FishDataPanel();
                 contentHBox.getChildren().setAll(fishDataPanel);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="141.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Label fx:id="labelItemPiscaryInfo" layoutX="18.0" layoutY="8.0" prefHeight="53.0" prefWidth="429.0" text="Nad Stawami (Podkarpacie, Siedliska)">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonPiscaryItem" layoutX="475.0" layoutY="41.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="64.0" text="Więcej" />
+      <CheckBox layoutX="86.0" layoutY="84.0" mnemonicParsing="false" />
+      <CheckBox layoutX="136.0" layoutY="84.0" mnemonicParsing="false" />
+      <CheckBox layoutX="188.0" layoutY="84.0" mnemonicParsing="false" />
+      <CheckBox layoutX="241.0" layoutY="84.0" mnemonicParsing="false" />
+      <CheckBox layoutX="292.0" layoutY="84.0" mnemonicParsing="false" />
+   </children>
+</fx:root>
